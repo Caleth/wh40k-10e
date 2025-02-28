@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="1b6d-dc06-5db9-c7d1" name="Imperium - Imperial Knights - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="35" battleScribeVersion="2.03" authorName="BSData Developers" type="catalogue" authorContact="Dunamis55 &amp; AbonShell">
+<catalogue xmlns="http://www.battlescribe.net/schema/catalogueSchema" library="true" id="1b6d-dc06-5db9-c7d1" name="Imperium - Imperial Knights - Library" gameSystemId="sys-352e-adc2-7639-d6a9" gameSystemRevision="1" revision="36" battleScribeVersion="2.03" authorName="BSData Developers" type="catalogue" authorContact="Dunamis55 &amp; AbonShell">
   <rules>
     <rule name="Code Chivalric" id="cbd-943-bc7b-20ec">
       <description>If your Army Faction is IMPERIAL KNIGHTS, at the end of the Read Mission Objectives step, you must select one of the Oaths below to be active for your army. Models from your army with this ability gain the associated Oath ability, and you gain the associated Deed to complete.
@@ -52,7 +52,79 @@ Reclaim the Realm
             <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
           </conditions>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="3bc7-5a1f-5f60-0964">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="fb88-8e8f-d171-9d3a">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="5288-b62e-7dd8-b29e">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
+      <constraints>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="3bc7-5a1f-5f60-0964" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="fb88-8e8f-d171-9d3a" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="5288-b62e-7dd8-b29e" includeChildSelections="false"/>
+      </constraints>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="c452-2ad4-9248-f291" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
+      </entryLinks>
     </entryLink>
     <entryLink import="true" name="Armiger Warglaive" type="selectionEntry" id="7d6e-b355-910c-aec4" targetId="5bbd-c5d3-58d7-e391">
       <modifiers>
@@ -318,6 +390,9 @@ Reclaim the Realm
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="139e-dcce-e017-3850"/>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3124-c3fd-256f-9bad"/>
               </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="bf7c-07fe-bcf4-0610" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Freedom&apos;s Hand" id="70b4-8523-6b7c-1b0a">
               <constraints>
@@ -348,6 +423,9 @@ Reclaim the Realm
                   </characteristics>
                 </profile>
               </profiles>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="d1cf-e0c1-285e-c146" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Chainbreaker multi-laser" id="43a9-66c5-ec02-baa9">
               <constraints>
@@ -367,6 +445,9 @@ Reclaim the Realm
                   </characteristics>
                 </profile>
               </profiles>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="267f-2b53-6bc6-10b7" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntry>
@@ -420,6 +501,9 @@ Reclaim the Realm
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="48ad-8c00-9477-67cf"/>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="d7cc-f85-63d8-e066"/>
               </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="3161-d482-cdd7-02dc" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Hekhtur&apos;s pistol" id="e8b4-ffab-1b5c-d2a0">
               <profiles>
@@ -439,6 +523,9 @@ Reclaim the Realm
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5ee4-84cd-f516-846e"/>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3d17-adbb-c338-67"/>
               </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="5a6b-3c65-73d3-0767" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
         </selectionEntry>
@@ -505,9 +592,13 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="9a4f-64e1-6ace-8796"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="4d99-8ac1-6e80-bf79" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="6a88-7337-f883-082a" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="eb41-f034-7b52-9b2f" includeChildSelections="false"/>
       </constraints>
       <entryLinks>
         <entryLink import="true" name="Heavy Stubber" type="selectionEntryGroup" id="54c4-470c-eaf4-6333" targetId="6c62-bd1-49f9-64bd"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="cab9-7b8e-ea6b-ac7f" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Reaper chain-cleaver" id="f120-b686-d22f-e700">
@@ -539,6 +630,9 @@ Reclaim the Realm
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2220-ec7e-24eb-a42e"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b296-b8b7-9569-96da"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="11be-8a9e-21b9-5d16" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Thermal spear" id="b2b4-a523-8dc5-ca7c">
           <constraints>
@@ -561,6 +655,9 @@ Reclaim the Realm
           <infoLinks>
             <infoLink name="Melta" type="rule" id="9fa5-1703-2012-858" targetId="7cdb-fb99-44a9-8849"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="6a51-f437-2430-7f59" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <costs>
@@ -580,6 +677,70 @@ Reclaim the Realm
               </conditions>
             </conditionGroup>
           </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="4d99-8ac1-6e80-bf79">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="6a88-7337-f883-082a">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="eb41-f034-7b52-9b2f">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
         </modifier>
       </modifiers>
     </selectionEntry>
@@ -622,9 +783,13 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="9a4f-64e1-6ace-8796"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="86c0-ca1c-1616-59a2" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="0717-03f7-d030-45bc" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="9b6c-5193-51a3-3194" includeChildSelections="false"/>
       </constraints>
       <entryLinks>
         <entryLink import="true" name="Heavy Stubber" type="selectionEntryGroup" id="9cd6-456f-8bc6-7cc7" targetId="6c62-bd1-49f9-64bd"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="e36f-fe3e-ae31-ecd7" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Armiger autocannon" id="d0c7-36d4-2d50-f975">
@@ -645,6 +810,9 @@ Reclaim the Realm
               </characteristics>
             </profile>
           </profiles>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="1da9-5ada-af94-7410" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Armoured feet" id="4ef9-6016-2523-eb62">
           <profiles>
@@ -664,6 +832,9 @@ Reclaim the Realm
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2a39-98dc-b900-c32c"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="987e-6f30-18d3-a6c"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="764d-c8b8-6608-4785" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <costs>
@@ -683,6 +854,70 @@ Reclaim the Realm
               </conditions>
             </conditionGroup>
           </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="86c0-ca1c-1616-59a2">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="0717-03f7-d030-45bc">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="9b6c-5193-51a3-3194">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
         </modifier>
       </modifiers>
     </selectionEntry>
@@ -717,6 +952,9 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1964-e513-f73-b38b"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="032e-07b0-6ab3-5e4f" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="c531-0289-91be-becb" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="8163-7261-22a1-6abc" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink name="Deadly Demise" type="rule" id="8088-910c-2d7b-5825" targetId="b68a-5ded-65ac-98c">
@@ -740,7 +978,11 @@ Reclaim the Realm
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3aeb-ac3e-f688-af6c"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="179-7318-9a76-548b"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="ebc4-7654-3289-c727" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </entryLink>
+        <entryLink import="true" name="Crusade" hidden="false" id="2df9-7011-d3f3-ced5" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <infoGroups>
         <infoGroup name="Paladin’s Duty (Bondsman)" id="4fee-9a37-6a1e-3eb8">
@@ -772,6 +1014,65 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="8163-7261-22a1-6abc">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="c531-0289-91be-becb">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Questoris heavy stubber" id="93c3-d64f-2d6e-ea" collective="false">
@@ -796,6 +1097,9 @@ Reclaim the Realm
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c062-34c5-3237-1b51"/>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="99db-575f-8675-f2eb"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="5e55-70af-f430-8edd" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
     </selectionEntry>
@@ -830,6 +1134,9 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1964-e513-f73-b38b"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="6a1a-14fd-b554-8221" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="4593-3345-d684-c507" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="f175-5572-e430-76d7" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink name="Deadly Demise" type="rule" id="64e9-5ed7-cfe4-ec4b" targetId="b68a-5ded-65ac-98c">
@@ -853,7 +1160,11 @@ Reclaim the Realm
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="dda0-6bcf-a968-8a0c"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="c8bd-fa16-d6c8-f85e"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="9503-9dc9-7199-c25d" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </entryLink>
+        <entryLink import="true" name="Crusade" hidden="false" id="acc1-6b2b-0f8a-2e5d" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <infoGroups>
         <infoGroup name="Errant&apos;s Duty (Bondsman)" id="51dc-cd3f-dc42-ecb5">
@@ -888,6 +1199,65 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="f175-5572-e430-76d7">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="4593-3345-d684-c507">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Knight Gallant" id="eb4-4a67-11e9-3cb8">
@@ -921,6 +1291,9 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1964-e513-f73-b38b"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="b74d-7d7f-a537-c0b4" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="b389-7041-da35-8111" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="e239-a4ba-2a0a-b609" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink name="Deadly Demise" type="rule" id="f3e9-cde7-a00f-75df" targetId="b68a-5ded-65ac-98c">
@@ -938,6 +1311,7 @@ Reclaim the Realm
         <entryLink import="true" name="Carapace-mounted Weapon" type="selectionEntryGroup" id="e309-43b9-a759-3c0e" targetId="5fda-853d-c4f6-3f92"/>
         <entryLink import="true" name="Warlord" type="selectionEntry" id="2d2b-c7d0-557c-ed9a" targetId="ad65-d3cb-c677-7cb3"/>
         <entryLink import="true" name="Enhancements" type="selectionEntryGroup" id="7fae-bb70-f677-cc80" targetId="f77c-b744-c82a-a3cd"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="45a6-e9a9-1e02-c5a3" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Reaper chainsword" id="528-89bb-c0a5-99e7">
@@ -970,6 +1344,9 @@ Reclaim the Realm
             </profile>
           </profiles>
           <comment>Gallant variant</comment>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="0563-1954-e43a-211e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Thunderstrike gauntlet" id="78c6-6f21-6c74-ebc6">
           <constraints>
@@ -1001,6 +1378,9 @@ Reclaim the Realm
             </profile>
           </profiles>
           <comment>Gallant variant</comment>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="d0a9-f42c-5bcd-be7c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <infoGroups>
@@ -1035,6 +1415,65 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="e239-a4ba-2a0a-b609">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="b389-7041-da35-8111">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Knight Warden" id="c609-c87e-f9dd-5006">
@@ -1063,6 +1502,9 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1964-e513-f73-b38b"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="64a6-1f55-f503-3b21" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="e28b-6838-9db6-4219" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="3fe5-fcb8-3d72-b8b8" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink name="Deadly Demise" type="rule" id="3ae5-3bd7-3026-bfc2" targetId="b68a-5ded-65ac-98c">
@@ -1086,13 +1528,20 @@ Reclaim the Realm
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="3f68-673f-c4fe-6551"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="ba75-3aa6-4e58-9328"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="ad2f-e9a6-6553-7cef" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </entryLink>
         <entryLink import="true" name="Heavy flamer" hidden="false" type="selectionEntry" id="8ee9-1713-3809-32b7" targetId="ca02-db54-10e6-f20e">
           <constraints>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="2f9f-76e5-ea8b-fecb"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3b40-5d5a-974f-9832"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="0909-275a-f70d-c2a9" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </entryLink>
+        <entryLink import="true" name="Crusade" hidden="false" id="3887-092d-e309-a220" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <infoGroups>
         <infoGroup name="Thin Their Ranks" id="c848-a377-71de-e3d6">
@@ -1134,6 +1583,65 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="3fe5-fcb8-3d72-b8b8">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="e28b-6838-9db6-4219">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Knight Crusader" id="1e27-a6de-3840-a050">
@@ -1162,6 +1670,9 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1964-e513-f73-b38b"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="a4e8-296b-bbaa-9243" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="da1b-6c41-46f4-9fa9" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="3589-95de-3bb0-3d3b" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink name="Deadly Demise" type="rule" id="3d17-6f6c-5b03-4262" targetId="b68a-5ded-65ac-98c">
@@ -1191,6 +1702,7 @@ Reclaim the Realm
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="3b40-5d5a-974f-9832"/>
           </constraints>
         </entryLink>
+        <entryLink import="true" name="Crusade" hidden="false" id="80d4-2a7b-5c0f-39d8" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Titanic feet" id="313a-c82b-6271-d85d">
@@ -1212,6 +1724,9 @@ Reclaim the Realm
             </profile>
           </profiles>
           <comment>Crusader variant</comment>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="8918-c47a-4c45-2465" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <infoGroups>
@@ -1283,6 +1798,65 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="3589-95de-3bb0-3d3b">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="da1b-6c41-46f4-9fa9">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Knight Preceptor" id="ebd9-7175-3f0c-72a9">
@@ -1316,6 +1890,9 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1964-e513-f73-b38b"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="929b-552a-46df-7592" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="b84e-f35b-0b98-e755" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="923a-413f-d37d-f1eb" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink name="Deadly Demise" type="rule" id="a8e1-58c-cd37-6695" targetId="b68a-5ded-65ac-98c">
@@ -1333,6 +1910,7 @@ Reclaim the Realm
         <entryLink import="true" name="Carapace-mounted Weapon" type="selectionEntryGroup" id="9c9b-5c7f-a8eb-d169" targetId="5fda-853d-c4f6-3f92"/>
         <entryLink import="true" name="Warlord" type="selectionEntry" id="d0fc-1923-608a-3c27" targetId="ad65-d3cb-c677-7cb3"/>
         <entryLink import="true" name="Enhancements" type="selectionEntryGroup" id="6041-4013-b4a-9e30" targetId="f77c-b744-c82a-a3cd"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="a512-b3c9-1d28-8ea1" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Las-impulsor" id="e1a0-435d-be85-5e07">
@@ -1367,6 +1945,9 @@ Reclaim the Realm
           <infoLinks>
             <infoLink name="Blast" type="rule" id="e8c6-d420-b95b-6149" targetId="6c1f-1cf7-ff25-c99e"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="1bfe-7f91-68c5-614e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
@@ -1386,6 +1967,9 @@ Reclaim the Realm
                   </characteristics>
                 </profile>
               </profiles>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="b34d-a5f7-f243-15dc" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -1426,6 +2010,65 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="923a-413f-d37d-f1eb">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="b84e-f35b-0b98-e755">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Knight Castellan" id="6e36-f85-1c3b-8bf3">
@@ -1464,6 +2107,9 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1964-e513-f73-b38b"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="edfe-2255-5a82-7df6" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="178e-fc64-94a0-0d29" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="c847-0c64-e469-01d2" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink name="Deadly Demise" type="rule" id="ea47-9a4d-8438-d644" targetId="b68a-5ded-65ac-98c">
@@ -1485,13 +2131,20 @@ Reclaim the Realm
             <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="cbb0-131a-8266-ae3e"/>
             <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="6911-e2d-80b6-cd57"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="1767-01f0-af73-ea1f" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </entryLink>
         <entryLink import="true" name="Titanic feet" hidden="false" type="selectionEntry" id="3742-70f7-6207-8820" targetId="288c-1cbc-8340-9c0a">
           <constraints>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="f814-a527-cff2-5132"/>
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="cdfc-7732-f612-44bb"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="f0b3-8cc5-d576-0599" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </entryLink>
+        <entryLink import="true" name="Crusade" hidden="false" id="3127-4534-78b6-c2ad" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Plasma decimator" id="18d7-565e-a1b7-4040">
@@ -1527,6 +2180,9 @@ Reclaim the Realm
             <infoLink name="Blast" type="rule" id="13ee-4711-b32-6a6f" targetId="6c1f-1cf7-ff25-c99e"/>
             <infoLink name="Hazardous" type="rule" id="26cb-174c-3706-2658" targetId="8367-374c-f87-c627"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="5ba7-6a11-0855-9930" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Volcano lance" id="4a7e-57b0-1b1a-b226">
           <profiles>
@@ -1549,6 +2205,9 @@ Reclaim the Realm
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="dfc5-f717-a51f-e822"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5a0e-8ab4-51c9-8a1f"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="81b2-9941-542f-8f2e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <costs>
@@ -1568,6 +2227,65 @@ Reclaim the Realm
               </conditions>
             </conditionGroup>
           </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="c847-0c64-e469-01d2">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="178e-fc64-94a0-0d29">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
         </modifier>
       </modifiers>
     </selectionEntry>
@@ -1607,6 +2325,9 @@ Reclaim the Realm
       </profiles>
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="1964-e513-f73-b38b"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="0541-a67c-9a14-4fd8" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="b8d0-5930-fff5-2cd8" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="299c-8cb9-dacd-b4ba" includeChildSelections="true"/>
       </constraints>
       <infoLinks>
         <infoLink name="Deadly Demise" type="rule" id="ca96-fbd1-b224-a457" targetId="b68a-5ded-65ac-98c">
@@ -1635,6 +2356,7 @@ Reclaim the Realm
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="cdfc-7732-f612-44bb"/>
           </constraints>
         </entryLink>
+        <entryLink import="true" name="Crusade" hidden="false" id="1067-f082-3f7d-83fb" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <selectionEntries>
         <selectionEntry type="upgrade" import="true" name="Thundercoil Harpoon" id="9a45-74ba-e166-9692">
@@ -1659,6 +2381,9 @@ Reclaim the Realm
             <infoLink name="Anti-" type="rule" id="4781-e054-4f92-d310" targetId="4111-82e3-9444-e942"/>
             <infoLink name="Devastating Wounds" type="rule" id="797b-1de7-c38-a970" targetId="be1e-ac8e-1e2c-3528"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="8130-c77f-9bd4-5658" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Conflagration cannon" id="be5c-af2b-86d3-da18">
           <profiles>
@@ -1682,6 +2407,9 @@ Reclaim the Realm
             <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="dfc5-f717-a51f-e822"/>
             <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="5a0e-8ab4-51c9-8a1f"/>
           </constraints>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="44f5-6981-7056-d9c8" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <costs>
@@ -1701,6 +2429,65 @@ Reclaim the Realm
               </conditions>
             </conditionGroup>
           </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="299c-8cb9-dacd-b4ba">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="b8d0-5930-fff5-2cd8">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
         </modifier>
       </modifiers>
     </selectionEntry>
@@ -1924,6 +2711,9 @@ Reclaim the Realm
     <selectionEntry type="model" import="true" name="Acastus Knight Asterius" hidden="false" id="f8d0-fdf2-2e5e-3b74">
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="5e65-5db0-dbbb-73ac"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="609f-5866-e60a-5900" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="38d2-8ec9-b157-6511" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="4293-da89-ccca-cabb" includeChildSelections="false"/>
       </constraints>
       <categoryLinks>
         <categoryLink targetId="dbd4-63-af05-998" id="abbb-419c-deee-547f" primary="true" name="Vehicle"/>
@@ -1985,6 +2775,9 @@ Reclaim the Realm
           <infoLinks>
             <infoLink name="Devastating Wounds" hidden="false" type="rule" id="19a7-5dd0-7a6-95f4" targetId="be1e-ac8e-1e2c-3528"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="97e3-17ab-336a-8c97" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Karacnos mortar battery" hidden="false" id="6a9c-1e8b-698b-5640">
           <constraints>
@@ -2010,6 +2803,9 @@ Reclaim the Realm
             <infoLink name="Indirect Fire" hidden="false" type="rule" id="6049-9e61-b9c6-6ce8" targetId="4ddd-4e29-acdd-5e6d"/>
             <infoLink name="Ignores Cover" hidden="false" type="rule" id="2e98-f848-4ac6-aee9" targetId="4640-43e7-30b-215a"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="48b4-673e-708c-3c3c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Twin conversion beam cannon" hidden="false" id="4287-98aa-9723-71c5">
           <constraints>
@@ -2039,6 +2835,9 @@ Reclaim the Realm
               <comment>24&quot; variant</comment>
             </rule>
           </rules>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="40b5-6013-0c60-f6e8" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Titanic feet" hidden="false" id="b5aa-7ade-b5e-2bf">
           <constraints>
@@ -2058,6 +2857,9 @@ Reclaim the Realm
               </characteristics>
             </profile>
           </profiles>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="b71a-1431-a2d8-e3b4" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <costs>
@@ -2074,11 +2876,81 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="609f-5866-e60a-5900">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="38d2-8ec9-b157-6511">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="4293-da89-ccca-cabb">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="3f2a-9f9a-661b-6070" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Acastus Knight Porphyrion" hidden="false" id="61c9-8baf-22b4-5d84">
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="8c14-ffe1-d6bf-e209"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="314c-6dcc-af81-256a" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="38df-79be-c216-ace9" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="4927-230e-8f57-3c75" includeChildSelections="false"/>
       </constraints>
       <profiles>
         <profile name="Acastus Knight Porphyrion" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="e6ec-843a-ab40-28a">
@@ -2146,6 +3018,9 @@ Reclaim the Realm
               </characteristics>
             </profile>
           </profiles>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="a3c8-9603-f5c2-5570" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Twin magna lascannon" hidden="false" id="1d9a-57f1-78bd-f342">
           <constraints>
@@ -2165,6 +3040,9 @@ Reclaim the Realm
               </characteristics>
             </profile>
           </profiles>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="04c4-c2a9-eb54-5b60" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
@@ -2189,6 +3067,9 @@ Reclaim the Realm
                 <infoLink name="Indirect Fire" hidden="false" type="rule" id="b9e2-8508-55d2-15d8" targetId="4ddd-4e29-acdd-5e6d"/>
                 <infoLink name="Blast" hidden="false" type="rule" id="927a-74b6-c411-d169" targetId="6c1f-1cf7-ff25-c99e"/>
               </infoLinks>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="bb9f-b535-2755-b5e9" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Helios defence missiles" hidden="false" id="f5b1-c36e-4936-862f">
               <profiles>
@@ -2208,6 +3089,9 @@ Reclaim the Realm
                 <infoLink name="Heavy" hidden="false" type="rule" id="9b37-c1b-267-85a5" targetId="1202-10a8-78e9-4c67"/>
                 <infoLink name="Anti-" hidden="false" type="rule" id="1098-f00-4b7-c9c6" targetId="4111-82e3-9444-e942"/>
               </infoLinks>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="ab77-dc5a-b595-ef3f" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
           </selectionEntries>
           <constraints>
@@ -2237,6 +3121,9 @@ Reclaim the Realm
                       </characteristics>
                     </profile>
                   </profiles>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="02d0-9697-d14e-e258" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntry>
@@ -2260,6 +3147,9 @@ Reclaim the Realm
                       </characteristics>
                     </profile>
                   </profiles>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="fc5f-89e2-26cb-84cf" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Lascannon" hidden="false" id="f156-8ba5-4a15-ef86">
                   <profiles>
@@ -2279,6 +3169,9 @@ Reclaim the Realm
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="e98d-4e77-4c80-1b60"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="7716-179f-af5c-bd9d"/>
                   </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="59ef-7b16-d2f7-ec0b" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntry>
@@ -2302,6 +3195,9 @@ Reclaim the Realm
                     <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="e98d-4e77-4c80-1b60"/>
                     <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="7716-179f-af5c-bd9d"/>
                   </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="1424-3e16-9db2-02c1" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntry>
@@ -2326,11 +3222,81 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="314c-6dcc-af81-256a">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="38df-79be-c216-ace9">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="4927-230e-8f57-3c75">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="d068-cd93-de4c-42d0" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Cerastus Knight Lancer" hidden="false" id="9ee-e289-bc6c-d943">
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="5ceb-841e-891c-8add"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="7e02-4da1-601e-2c09" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="81f2-0a9a-e9a4-9a9e" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="289c-95a3-02a3-42e7" includeChildSelections="true"/>
       </constraints>
       <categoryLinks>
         <categoryLink targetId="9cfd-1c32-585f-7d5c" id="9a8f-a3da-977e-c2a9" primary="true" name="Character"/>
@@ -2435,11 +3401,15 @@ Reclaim the Realm
             <infoLink name="Assault" hidden="false" type="rule" id="71dd-1ff6-1422-eaa0" targetId="fc8a-8c24-bae9-cc1c"/>
             <infoLink name="Lance" hidden="false" type="rule" id="540d-2501-1224-f724" targetId="2ebc-abdf-8129-6c57"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="9305-af18-8cd0-111c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <entryLinks>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="505e-4379-b9a8-7a22" targetId="ad65-d3cb-c677-7cb3"/>
         <entryLink import="true" name="Enhancements" hidden="false" type="selectionEntryGroup" id="bac9-489f-1691-f420" targetId="f77c-b744-c82a-a3cd"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="7b24-6ab6-e41d-031c" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="430"/>
@@ -2455,11 +3425,73 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="289c-95a3-02a3-42e7">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="81f2-0a9a-e9a4-9a9e">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Cerastus Knight Castigator" hidden="false" id="1654-5c17-474e-2d84">
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="7f6a-8587-b1b4-f3e2"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="4b2b-8182-9693-3bb8" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="1461-6b01-c572-2d01" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="fde6-497a-7361-067e" includeChildSelections="true"/>
       </constraints>
       <categoryLinks>
         <categoryLink targetId="9cfd-1c32-585f-7d5c" id="b863-b3a9-501e-23c8" primary="true" name="Character"/>
@@ -2537,6 +3569,9 @@ Reclaim the Realm
           <infoLinks>
             <infoLink name="Twin-linked" hidden="false" type="rule" id="3ca3-fd3c-9a4-bf0f" targetId="cf93-ad4d-2f08-a79d"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="6c26-02ea-68fd-4ab0" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Tempest warblade" hidden="false" id="c4b7-de58-e772-4156">
           <constraints>
@@ -2567,11 +3602,15 @@ Reclaim the Realm
               </characteristics>
             </profile>
           </profiles>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="2a0b-1389-273f-f413" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <entryLinks>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="194e-2d55-122f-b484" targetId="ad65-d3cb-c677-7cb3"/>
         <entryLink import="true" name="Enhancements" hidden="false" type="selectionEntryGroup" id="2233-9779-fa60-9aa5" targetId="f77c-b744-c82a-a3cd"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="5d1c-89a8-08e4-2d0e" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <costs>
         <cost name="pts" typeId="51b2-306e-1021-d207" value="465"/>
@@ -2587,11 +3626,73 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="fde6-497a-7361-067e">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="1461-6b01-c572-2d01">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Cerastus Knight Acheron" hidden="false" id="11d3-167b-6dff-a4c2">
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="6798-aa98-bf7e-b9a6"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="5ead-dd2d-64d9-4b5b" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="ea3e-3859-f16d-ff93" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="159e-a56b-a2a5-5596" includeChildSelections="true"/>
       </constraints>
       <profiles>
         <profile name="Cerastus Knight Acheron" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="791d-8b09-266f-8f61">
@@ -2662,6 +3763,9 @@ Reclaim the Realm
             <infoLink name="Ignores Cover" hidden="false" type="rule" id="753d-4967-a629-b44" targetId="4640-43e7-30b-215a"/>
             <infoLink name="Torrent" hidden="false" type="rule" id="3bf-472-4c59-1eca" targetId="5edf-d619-23e0-9b56"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="3bcf-3929-94df-ee82" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Twin heavy bolter" hidden="false" id="e2aa-5218-7371-8066">
           <constraints>
@@ -2685,6 +3789,9 @@ Reclaim the Realm
             <infoLink name="Sustained Hits" hidden="false" type="rule" id="b13f-ddb8-d98f-1b73" targetId="1897-c22c-9597-12b1"/>
             <infoLink name="Twin-linked" hidden="false" type="rule" id="ffa7-13f3-c99a-f696" targetId="cf93-ad4d-2f08-a79d"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="e9bc-70c8-f96e-03a7" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Reaper chainfist" hidden="false" id="1bbe-fc7c-926e-4181">
           <constraints>
@@ -2715,11 +3822,15 @@ Reclaim the Realm
               </characteristics>
             </profile>
           </profiles>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="1d5c-3b17-a3b5-efa1" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <entryLinks>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="124b-fd5-bbbe-43a5" targetId="ad65-d3cb-c677-7cb3"/>
         <entryLink import="true" name="Enhancements" hidden="false" type="selectionEntryGroup" id="770b-1fab-b78e-6699" targetId="f77c-b744-c82a-a3cd"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="a178-9fe6-44ef-6fe3" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <categoryLinks>
         <categoryLink targetId="9cfd-1c32-585f-7d5c" id="af18-9f43-9e1c-b75a" primary="true" name="Character"/>
@@ -2745,6 +3856,65 @@ Reclaim the Realm
               </conditions>
             </conditionGroup>
           </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="159e-a56b-a2a5-5596">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="ea3e-3859-f16d-ff93">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
         </modifier>
       </modifiers>
     </selectionEntry>
@@ -2804,6 +3974,9 @@ Reclaim the Realm
     <selectionEntry type="model" import="true" name="Cerastus Knight Atrapos" hidden="false" id="37a7-d156-1e4c-8fe1">
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="d679-43ae-5992-24da"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="f104-c22b-fd4d-e3a4" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="6524-d41a-b155-a056" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="45ac-c01f-6618-1b8c" includeChildSelections="true"/>
       </constraints>
       <categoryLinks>
         <categoryLink targetId="9cfd-1c32-585f-7d5c" id="8f56-489d-e5c9-9e16" primary="true" name="Character"/>
@@ -2851,6 +4024,7 @@ Reclaim the Realm
       <entryLinks>
         <entryLink import="true" name="Warlord" hidden="false" type="selectionEntry" id="ddee-b14f-2f5f-b710" targetId="ad65-d3cb-c677-7cb3"/>
         <entryLink import="true" name="Enhancements" hidden="false" type="selectionEntryGroup" id="6c36-94cc-74ff-8375" targetId="f77c-b744-c82a-a3cd"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="095d-f4bb-1361-3d14" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <infoGroups>
         <infoGroup name="Atrapos’ Duty (Bondsman)" hidden="false" id="ba80-4e4f-b5c1-a786">
@@ -2921,6 +4095,9 @@ Reclaim the Realm
               </characteristics>
             </profile>
           </profiles>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="416d-2dd3-434d-3dfa" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Graviton singularity cannon" hidden="false" id="406-60ac-f728-9c6d">
           <constraints>
@@ -2956,6 +4133,9 @@ Reclaim the Realm
             <infoLink name="Devastating Wounds" hidden="false" type="rule" id="2389-d8f6-c106-642b" targetId="be1e-ac8e-1e2c-3528"/>
             <infoLink name="Hazardous" hidden="false" type="rule" id="fce0-d9a0-8db2-cab" targetId="8367-374c-f87-c627"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="d55c-3384-a706-76e6" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <costs>
@@ -2972,11 +4152,73 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="45ac-c01f-6618-1b8c">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="6524-d41a-b155-a056">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Questoris Knight Magaera" hidden="false" id="adfa-19fc-7337-7350">
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="484c-caea-7c1b-c9c2"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="a5e6-15a6-3410-f88f" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="1b84-2015-47ef-1944" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="c08d-a0ed-e758-9521" includeChildSelections="true"/>
       </constraints>
       <profiles>
         <profile name="Questoris Knight Magaera" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="3148-a4a3-ecb-b23f">
@@ -3024,6 +4266,7 @@ Reclaim the Realm
       <entryLinks>
         <entryLink import="true" name="Warlord" type="selectionEntry" id="3ba1-e10a-27fc-18e7" targetId="ad65-d3cb-c677-7cb3"/>
         <entryLink import="true" name="Enhancements" type="selectionEntryGroup" id="3b95-d3bb-b405-d889" targetId="f77c-b744-c82a-a3cd"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="133f-7204-47b5-1ce3" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <infoGroups>
         <infoGroup name="Magaera’s Duty (Bondsman)" id="759b-2aad-b15b-2d5c">
@@ -3062,6 +4305,9 @@ Reclaim the Realm
           <infoLinks>
             <infoLink name="Sustained Hits" hidden="false" type="rule" id="a4c8-484b-4bc-26be" targetId="1897-c22c-9597-12b1"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="f313-dc0b-c6d7-f1f1" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Phased plasma-fusil" hidden="false" id="6da8-51ad-1ce1-cd25">
           <constraints>
@@ -3084,6 +4330,9 @@ Reclaim the Realm
           <infoLinks>
             <infoLink name="Rapid Fire" hidden="false" type="rule" id="c9b6-4190-305c-b633" targetId="c5c8-8b58-b8b6-7786"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="ffa4-3611-1a5c-3174" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
@@ -3103,12 +4352,18 @@ Reclaim the Realm
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="a2b4-8042-a6c0-8684"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="4978-e62b-166b-4198"/>
                   </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="d987-a005-1be1-2520" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </entryLink>
                 <entryLink import="true" name="Twin rad cleanser" hidden="false" type="selectionEntry" id="128d-8dbb-1f72-8dd5" targetId="3c65-a624-17db-64c4">
                   <constraints>
                     <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5c49-45bc-835d-71a6"/>
                     <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="1a6-3b17-33fb-b2b"/>
                   </constraints>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="5f45-c7b6-5463-27fd" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </entryLink>
               </entryLinks>
             </selectionEntry>
@@ -3129,11 +4384,73 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="c08d-a0ed-e758-9521">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="1b84-2015-47ef-1944">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
       </modifiers>
     </selectionEntry>
     <selectionEntry type="model" import="true" name="Questoris Knight Styrix" hidden="false" id="f8f3-a438-1212-93e8">
       <constraints>
         <constraint type="max" value="3" field="selections" scope="roster" shared="true" id="d499-5ba8-9b40-3c13"/>
+        <constraint type="max" value="6" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="099d-493f-7f03-4ed2" includeChildSelections="false"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="6180-9f1b-6b37-a1b8" includeChildSelections="true"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="d2ae-22a3-e30c-f974" includeChildSelections="true"/>
       </constraints>
       <profiles>
         <profile name="Questoris Knight Styrix" typeId="c547-1836-d8a-ff4f" typeName="Unit" hidden="false" id="b556-4e8-b576-9191">
@@ -3171,6 +4488,7 @@ Reclaim the Realm
       <entryLinks>
         <entryLink import="true" name="Enhancements" type="selectionEntryGroup" id="aeb8-4e11-ba45-64b9" targetId="f77c-b744-c82a-a3cd"/>
         <entryLink import="true" name="Warlord" type="selectionEntry" id="242d-3b3a-2f58-30e8" targetId="ad65-d3cb-c677-7cb3"/>
+        <entryLink import="true" name="Crusade" hidden="false" id="1bac-0e58-3e96-db9d" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
       </entryLinks>
       <infoLinks>
         <infoLink name="Deadly Demise" hidden="false" type="rule" id="7760-88-4b39-5805" targetId="b68a-5ded-65ac-98c">
@@ -3220,6 +4538,9 @@ Reclaim the Realm
             <infoLink name="Anti-" hidden="false" type="rule" id="46ab-922b-dd32-187" targetId="4111-82e3-9444-e942"/>
             <infoLink name="Blast" hidden="false" type="rule" id="23eb-d454-abbe-56cf" targetId="6c1f-1cf7-ff25-c99e"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="f523-dbfe-0183-63c1" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Volkite chierovile" hidden="false" id="b689-ef77-3687-fa10">
           <constraints>
@@ -3242,6 +4563,9 @@ Reclaim the Realm
           <infoLinks>
             <infoLink name="Devastating Wounds" hidden="false" type="rule" id="df1a-76bf-1ddb-9acc" targetId="be1e-ac8e-1e2c-3528"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="efcf-447e-a151-005d" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
@@ -3286,6 +4610,65 @@ Reclaim the Realm
               </conditions>
             </conditionGroup>
           </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="d2ae-22a3-e30c-f974">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="6180-9f1b-6b37-a1b8">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
         </modifier>
       </modifiers>
     </selectionEntry>
@@ -3341,6 +4724,9 @@ Reclaim the Realm
     <selectionEntry type="model" import="true" name="Armiger Moirax" hidden="false" id="e3dd-7e90-140a-b3ab">
       <constraints>
         <constraint type="max" value="6" field="selections" scope="roster" shared="true" id="542e-97b1-e173-f5b4"/>
+        <constraint type="max" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="222e-00e4-2534-481e" includeChildSelections="true"/>
+        <constraint type="min" value="0" field="716d-91b7-d55a-1022" scope="self" shared="true" id="7387-e6cb-bfa2-3161" includeChildSelections="true"/>
+        <constraint type="max" value="3" field="75bb-ded1-c86d-bdf0" scope="self" shared="true" id="cd46-b196-6a11-9e7e" includeChildSelections="false"/>
       </constraints>
       <categoryLinks>
         <categoryLink targetId="e338-111e-d0c6-b687" id="9918-6145-6e8d-75b3" primary="true" name="Battleline"/>
@@ -3397,6 +4783,9 @@ Reclaim the Realm
               </characteristics>
             </profile>
           </profiles>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="3502-ac1f-e23b-f1d6" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <selectionEntryGroups>
@@ -3430,6 +4819,9 @@ Reclaim the Realm
               <modifiers>
                 <modifier type="set" value="0" field="f9a0-734e-4f02-d969"/>
               </modifiers>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="1647-a0a1-face-a754" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Graviton pulsar" hidden="false" id="6496-9e76-13ee-bec8" defaultAmount="1">
               <constraints>
@@ -3456,6 +4848,9 @@ Reclaim the Realm
               <modifiers>
                 <modifier type="set" value="0" field="f9a0-734e-4f02-d969"/>
               </modifiers>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="ae65-ab1d-1658-5957" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Lightning lock" hidden="false" id="b7c9-95ee-4488-9de8">
               <constraints>
@@ -3477,6 +4872,9 @@ Reclaim the Realm
               <infoLinks>
                 <infoLink name="Sustained Hits" hidden="false" type="rule" id="9459-f8c-e4f0-d659" targetId="1897-c22c-9597-12b1"/>
               </infoLinks>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="4032-995d-d212-b979" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Conversion beam cannon" hidden="false" id="30be-cbba-e2ec-ceeb">
               <constraints>
@@ -3504,6 +4902,9 @@ Reclaim the Realm
                   <comment>12&quot; variant</comment>
                 </rule>
               </rules>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="5737-cb55-9d46-5115" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </selectionEntry>
             <selectionEntry type="upgrade" import="true" name="Siege claw and rad cleanser" hidden="false" id="caa0-3ec6-7d48-139">
               <constraints>
@@ -3528,6 +4929,9 @@ Reclaim the Realm
                       </characteristics>
                     </profile>
                   </profiles>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="149d-296e-3f5a-01da" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
                 <selectionEntry type="upgrade" import="true" name="Rad cleanser" hidden="false" id="9ab6-3696-208f-51e0" collective="true">
                   <constraints>
@@ -3552,6 +4956,9 @@ Reclaim the Realm
                     <infoLink name="Ignores Cover" hidden="false" type="rule" id="b1a3-83bc-2682-6aab" targetId="4640-43e7-30b-215a"/>
                     <infoLink name="Torrent" hidden="false" type="rule" id="b311-8f0a-9fd3-5afa" targetId="5edf-d619-23e0-9b56"/>
                   </infoLinks>
+                  <entryLinks>
+                    <entryLink import="true" name="Weapon Modifications" hidden="false" id="c221-1dc5-c565-51ba" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+                  </entryLinks>
                 </selectionEntry>
               </selectionEntries>
             </selectionEntry>
@@ -3572,7 +4979,74 @@ Reclaim the Realm
             </conditionGroup>
           </conditionGroups>
         </modifier>
+        <modifier type="append" value="(Battle-ready)" field="name">
+          <conditions>
+            <condition type="atMost" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+            <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="append" value="(Blooded)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="5" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Battle-hardened)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="15" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Heroic)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="30" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atMost" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="append" value="(Legendary)" field="name">
+          <conditionGroups>
+            <conditionGroup type="and">
+              <conditions>
+                <condition type="greaterThan" value="50" field="selections" scope="self" childId="2dbf-4d49-5d74-85c9" shared="true" includeChildSelections="true"/>
+                <condition type="atLeast" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+              </conditions>
+            </conditionGroup>
+          </conditionGroups>
+        </modifier>
+        <modifier type="increment" value="2" field="222e-00e4-2534-481e">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="increment" value="2" field="7387-e6cb-bfa2-3161">
+          <repeats>
+            <repeat value="1" repeats="1" field="selections" scope="self" childId="d1a5-4297-168b-11cd" shared="true" roundUp="false" includeChildSelections="true"/>
+          </repeats>
+        </modifier>
+        <modifier type="set" value="6" field="cd46-b196-6a11-9e7e">
+          <conditions>
+            <condition type="atLeast" value="1" field="selections" scope="self" childId="1511-18fe-f51e-7b9d" shared="true" includeChildSelections="true"/>
+          </conditions>
+        </modifier>
       </modifiers>
+      <entryLinks>
+        <entryLink import="true" name="Crusade" hidden="false" id="a889-7223-67fe-9d16" type="selectionEntryGroup" targetId="f868-bf2a-89f7-7e35"/>
+      </entryLinks>
     </selectionEntry>
     <selectionEntry type="upgrade" import="true" name="Show Imperial Knights" hidden="false" id="e82c-6f8c-2b97-a287">
       <categoryLinks>
@@ -3606,8 +5080,16 @@ Reclaim the Realm
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="40a9-3492-b8a5-8398"/>
       </constraints>
       <entryLinks>
-        <entryLink import="true" name="Meltagun" hidden="false" type="selectionEntry" id="709a-393b-c3ea-1d2a" targetId="441c-a2a8-59a4-85a4"/>
-        <entryLink import="true" name="Questoris heavy stubber" hidden="false" type="selectionEntry" id="5c62-d3a1-687b-b75f" targetId="eedf-6059-a15-3c86"/>
+        <entryLink import="true" name="Meltagun" hidden="false" type="selectionEntry" id="709a-393b-c3ea-1d2a" targetId="441c-a2a8-59a4-85a4">
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="5b0c-d9ed-7f36-8104" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
+        </entryLink>
+        <entryLink import="true" name="Questoris heavy stubber" hidden="false" type="selectionEntry" id="5c62-d3a1-687b-b75f" targetId="eedf-6059-a15-3c86">
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="89f0-9db7-1f80-011e" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
       <comment>Shared</comment>
     </selectionEntryGroup>
@@ -3629,8 +5111,16 @@ Reclaim the Realm
       </constraints>
       <comment>Shared</comment>
       <entryLinks>
-        <entryLink import="true" name="Reaper chainsword" hidden="false" type="selectionEntry" id="301c-7afe-38a8-cec5" targetId="1187-f3db-ea97-bada"/>
-        <entryLink import="true" name="Thunderstrike gauntlet" hidden="false" type="selectionEntry" id="be0d-5fd6-c8ee-aaed" targetId="46b4-d0f2-76f3-1fbb"/>
+        <entryLink import="true" name="Reaper chainsword" hidden="false" type="selectionEntry" id="301c-7afe-38a8-cec5" targetId="1187-f3db-ea97-bada">
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="2150-d9d3-0bf5-b7ae" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
+        </entryLink>
+        <entryLink import="true" name="Thunderstrike gauntlet" hidden="false" type="selectionEntry" id="be0d-5fd6-c8ee-aaed" targetId="46b4-d0f2-76f3-1fbb">
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="654d-de9e-9d5e-ac5c" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
+        </entryLink>
       </entryLinks>
     </selectionEntryGroup>
     <selectionEntryGroup name="Carapace-mounted Weapon" id="5fda-853d-c4f6-3f92">
@@ -3653,6 +5143,9 @@ Reclaim the Realm
             <infoLink name="Anti-" type="rule" id="c3d6-d17-694a-fe6d" targetId="4111-82e3-9444-e942"/>
             <infoLink name="Twin-linked" type="rule" id="893b-6213-7f23-961b" targetId="cf93-ad4d-2f08-a79d"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="ccc5-5602-14e0-7427" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Ironstorm missile pod" id="45af-c931-489a-2f0e">
           <profiles>
@@ -3672,6 +5165,9 @@ Reclaim the Realm
             <infoLink name="Blast" type="rule" id="f88c-b7db-2ad4-f396" targetId="6c1f-1cf7-ff25-c99e"/>
             <infoLink name="Indirect Fire" type="rule" id="2775-f328-3259-4f01" targetId="4ddd-4e29-acdd-5e6d"/>
           </infoLinks>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="98b5-e99d-2cda-f4a4" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
         <selectionEntry type="upgrade" import="true" name="Stormspear rocket pod" id="273-38fa-249e-3aa4">
           <profiles>
@@ -3687,6 +5183,9 @@ Reclaim the Realm
               </characteristics>
             </profile>
           </profiles>
+          <entryLinks>
+            <entryLink import="true" name="Weapon Modifications" hidden="false" id="474b-f007-6770-ff45" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+          </entryLinks>
         </selectionEntry>
       </selectionEntries>
       <constraints>
@@ -3704,12 +5203,18 @@ Reclaim the Realm
                 <constraint type="min" value="2" field="selections" scope="parent" shared="true" id="847e-3869-355b-e1fd"/>
                 <constraint type="max" value="2" field="selections" scope="parent" shared="true" id="d67d-61fc-3afd-f45"/>
               </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="0a32-6698-4569-59a1" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </entryLink>
             <entryLink import="true" name="Twin siegebreaker cannon" hidden="false" type="selectionEntry" id="339b-41ce-e24f-98d0" targetId="5235-ab7-8eda-29b7">
               <constraints>
                 <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="5db0-67a0-e4e3-e36e"/>
                 <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="276c-83f9-2c06-798c"/>
               </constraints>
+              <entryLinks>
+                <entryLink import="true" name="Weapon Modifications" hidden="false" id="dc79-9f57-6ae7-1a57" type="selectionEntryGroup" targetId="f9da-852a-d7f0-92e9"/>
+              </entryLinks>
             </entryLink>
           </entryLinks>
         </selectionEntry>
@@ -4095,6 +5600,42 @@ No ADEPTUS MECHANICUS models from your army can be your WARLORD.</description>
         <constraint type="max" value="1" field="selections" scope="parent" shared="true" id="b27-2395-910d-8372" includeChildSelections="false"/>
         <constraint type="min" value="1" field="selections" scope="parent" shared="true" id="fa78-6df5-230f-2b4"/>
       </constraints>
+    </selectionEntryGroup>
+    <selectionEntryGroup name="Crusade" id="f868-bf2a-89f7-7e35" hidden="false" collapsible="true">
+      <entryLinks>
+        <entryLink import="true" name="Experience Points" hidden="false" id="2a47-2064-8796-b40e" type="selectionEntry" targetId="2dbf-4d49-5d74-85c9"/>
+        <entryLink import="true" name="Legendary Veterans" hidden="false" id="0f31-a331-dcfd-fc75" type="selectionEntry" targetId="1511-18fe-f51e-7b9d"/>
+        <entryLink import="true" name="Weapon Modifications" hidden="false" id="a876-bb21-a235-b181" type="selectionEntry" targetId="d1a5-4297-168b-11cd"/>
+        <entryLink import="true" name="Battle Scars" hidden="false" id="ba66-9119-4b1b-f5ff" type="selectionEntryGroup" targetId="1576-e816-033f-828d"/>
+        <entryLink import="true" name="Battle Traits" hidden="false" id="b6fe-51d4-7a0e-492c" type="selectionEntryGroup" targetId="0511-d9ad-2978-2234">
+          <entryLinks>
+            <entryLink import="true" name="Pariah Nexus Battle Traits" hidden="false" id="0c6e-53d5-b41a-223a" type="selectionEntryGroup" targetId="2967-d724-47f4-8b48"/>
+            <entryLink import="true" name="Tyrannic War Battle Traits" hidden="false" id="bfeb-f286-08d4-4959" type="selectionEntryGroup" targetId="bd16-7502-76f7-7c1e"/>
+          </entryLinks>
+          <constraints>
+            <constraint type="min" value="0" field="selections" scope="parent" shared="true" id="3fcd-823f-a99a-ad7b" includeChildSelections="false"/>
+          </constraints>
+        </entryLink>
+        <entryLink import="true" name="Crusade Relics" hidden="false" id="7589-34ce-94f4-0e2c" type="selectionEntryGroup" targetId="e919-5b46-974d-a5b1">
+          <entryLinks>
+            <entryLink import="true" name="Pariah Nexus Relics" hidden="false" id="7df6-f937-4885-27a3" type="selectionEntryGroup" targetId="419f-97fa-dfff-d941"/>
+            <entryLink import="true" name="Tyrannic War Relics" hidden="false" id="2c23-bacf-d1a0-d75e" type="selectionEntryGroup" targetId="202b-d177-fbf1-4c36"/>
+          </entryLinks>
+        </entryLink>
+      </entryLinks>
+      <modifiers>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="lessThan" value="1" field="selections" scope="roster" childId="cac3-71d1-ea4b-795d" shared="true" includeChildSelections="true" includeChildForces="true"/>
+          </conditions>
+        </modifier>
+        <modifier type="set" value="true" field="hidden">
+          <conditions>
+            <condition type="notInstanceOf" value="1" field="selections" scope="primary-catalogue" childId="25dd-7aa0-6bf4-f2d5" shared="true"/>
+          </conditions>
+        </modifier>
+      </modifiers>
+      <comment>Crusade content</comment>
     </selectionEntryGroup>
   </sharedSelectionEntryGroups>
   <sharedProfiles>
