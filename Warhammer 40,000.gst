@@ -662,7 +662,7 @@
           targetId="cc77-a53-fca8-f48e" />
       </categoryLinks>
     </forceEntry>
-    <forceEntry name="Crusade Force" id="cac3-71d1-ea4b-795d" hidden="true">
+    <forceEntry name="Crusade Force" id="cac3-71d1-ea4b-795d" hidden="false">
       <forceEntries>
         <forceEntry name="Crusade Army" id="ff7b-8f73-1756-650a" hidden="false">
           <categoryLinks>
